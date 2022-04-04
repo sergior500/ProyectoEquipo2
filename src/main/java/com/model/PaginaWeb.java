@@ -40,7 +40,7 @@ public class PaginaWeb {
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(URL, fechaYhora, nombre);
+		return Objects.hash(URL, fechaYhora);
 	}
 	@Override
 	public boolean equals(Object obj) {
@@ -55,6 +55,6 @@ public class PaginaWeb {
 	}
 	@Override
 	public String toString() {
-		return "PaginaWeb con nombre:" + nombre + "\nURL:" + URL + "\nFecha Y Hora=" + fechaYhora;
+		return "PaginaWeb URL:" + URL + " y Fecha Y Hora:" + fechaYhora + "\n";
 	}
 }
