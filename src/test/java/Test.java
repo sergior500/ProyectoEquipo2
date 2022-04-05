@@ -1,6 +1,7 @@
 package test.java;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
@@ -24,7 +25,7 @@ class Test {
 	void paginaMismoDiaTest() {
 		List<PaginaWeb> resultado = new ArrayList();
 		PaginaWeb pw1 = new PaginaWeb("www.google.es", LocalDateTime.of(2020,3,2,17,20,00));
-		PaginaWeb pw2 = new PaginaWeb("www.google.es", LocalDateTime.of(2020,4,2,17,20,00));
+		PaginaWeb pw2 = new PaginaWeb("www.yahoo.es", LocalDateTime.of(2020,4,2,17,20,00));
 		resultado.add(pw2);
 		resultado.add(pw1);
 		Historial historial = new Historial();
@@ -32,7 +33,9 @@ class Test {
 		historial.annadirAlHistorial(pw1);
 		historial.annadirAlHistorial(pw2);
 		
-		assertTrue(historial.mostrarElementoLista(LocalDate.of(2020, 3, 2)).contains("google"));
+		assertFalse(historial.mostrarElementoLista(LocalDate.of(2020, 3, 2)).toString().contains("yahoo"));
+		assertTrue(historial.mostrarElementoLista(LocalDate.of(2020, 3, 2)).toString().contains("google"));
+		assertTrue(historial.mostrarElementoLista(LocalDate.of(2020, 3, 2)).contains(pw1));
 	}	
 	
 	@org.junit.jupiter.api.Test
